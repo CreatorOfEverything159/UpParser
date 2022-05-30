@@ -15,6 +15,15 @@ class State:
     def __str__(self) -> str:
         return self._symbol
 
+    def is_normal(self) -> bool:
+        return self._symbol == 'q'
+
+    def is_return(self) -> bool:
+        return self._symbol == 'b'
+
+    def is_final(self) -> bool:
+        return self._symbol == 't'
+
     @property
     def symbol(self) -> str:
         return self._symbol

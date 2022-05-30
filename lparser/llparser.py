@@ -1,14 +1,14 @@
-from rule import Rule
-from states import State
-from configuration import Configuration
+from .rule import Rule
+from .states import State
+from .configuration import Configuration
 
 
-class Parser:
-    def __init__(self, rules: list[Rule], enter: str):
-        self._rules = rules
-        self._enter = enter.strip()  # enter[n + 1] = '#'
+class LLParser:
+    def __init__(self, rules: list[str], enter: str):
+        self._rules = list(map(Rule, rules))
+        self._enter = enter.replace(' ', '')
         self._s = self._rules[0].left
-        self._configuration = Configuration()
+        self._configuration = Configuration.get_llparser_configuration()
 
     def run(self):
         self.convolution_attempt()
